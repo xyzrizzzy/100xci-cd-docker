@@ -13,6 +13,9 @@ RUN bun install
 COPY ./apps/http-backend ./apps/http-backend
 
 RUN bun install
+# Accept the secret from GitHub Actions and set it as an environment variable
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
 RUN bun run db:generate
 
 EXPOSE 8000
