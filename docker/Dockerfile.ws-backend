@@ -6,13 +6,15 @@ COPY ./packages ./packages
 COPY ./bun.lock ./
 COPY package.json ./
 COPY turbo.json ./
-COPY apps/http-backend/package.* ./apps/http-backend/package.*
+COPY apps/ws-backend/package.* ./apps/ws-backend/package.*
 
 RUN bun install
 
 COPY ./apps/ws-backend ./apps/ws-backend
 
 RUN bun install
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
 RUN bun run db:generate
 
 EXPOSE 8080
