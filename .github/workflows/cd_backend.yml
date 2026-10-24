@@ -23,7 +23,7 @@ jobs:
           context: .
           file: ./docker/Dockerfile.http-backend
           push: true
-          tags: master/http-backend:${{ github.sha }}
+          tags: ayushshh/http-backend:${{ github.sha }}
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
       ## steps to deploy to the vm
