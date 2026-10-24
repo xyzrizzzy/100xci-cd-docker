@@ -1,0 +1,23 @@
+FROM oven/bun:1.4.4
+
+WORKDIR /usr/src/app
+
+COPY ./packages ./packages
+COPY ./bun.lock ./
+COPY package.json ./
+COPY turbo.json ./
+COPY apps/http-backend/package.* ./apps/http-backend/package.*
+
+RUN bun install
+
+COPY ./apps/http-backend ./apps/http-backend
+
+RUN bun install
+RUN bun run db:generate
+
+EXPOSE 8000
+
+CMD ["bun", "run", "http-start"]
+
+# running this command will build the image and run it
+# docker build -t http-bs -f ./docker/Dockerfile.http-backend .

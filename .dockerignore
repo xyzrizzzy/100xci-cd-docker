@@ -1,0 +1,40 @@
+# Dependencies (the critical one for monorepos — use **/ to catch nested ones)
+node_modules
+**/node_modules
+
+# Turborepo cache
+.turbo
+**/.turbo
+
+# Build output
+**/dist
+**/.next
+out
+
+# VCS
+.git
+.gitignore
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# IDE / OS
+.vscode
+.idea
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Docker itself
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# CI / misc
+.github/
+coverage
+.nyc_output   
